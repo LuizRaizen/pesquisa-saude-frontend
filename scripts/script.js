@@ -88,7 +88,7 @@ document.getElementById("questionario").addEventListener("submit", async functio
   // Enviar para a API
   let data;
   try {
-    const response = await fetch("http://127.0.0.1:8000/processar", {
+    const response = await fetch("https://pesquisa-saude-backend.onrender.com/processar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome, email, respostas })
