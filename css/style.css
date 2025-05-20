@@ -1,0 +1,59 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.hero-section {
+  background: linear-gradient(rgba(25, 135, 84, 0.85), rgba(25, 135, 84, 0.85)),
+              url('https://images.unsplash.com/photo-1588776814546-ec2457d7e57b?auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.card {
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.btn-success {
+  font-size: 1.1rem;
+}
+
+.text-danger {
+  color: #dc3545;
+  font-size: 0.9rem;
+}
+
+#carregando {
+  animation: fadein 0.3s ease-in-out;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#respostaVisual {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.titulo-dica {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.mb-5 {
+  max-width: 800px;
+  margin: auto;
+}

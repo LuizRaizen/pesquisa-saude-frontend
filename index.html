@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesquisa de Saúde e Bem-Estar</title>
+
+  <!-- Bootstrap e Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Estilo personalizado -->
+   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Estilos opcionais -->
+  <style>
+    .text-danger { font-size: 0.9rem; }
+    #carregando { animation: fadein 0.3s ease-in-out; }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero-section text-white text-center py-5 mb-4 bg-success">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Pesquisa de Saúde e Bem-Estar</h1>
+      <p class="lead">Responda 10 perguntas rápidas e receba orientações personalizadas</p>
+    </div>
+  </header>
+
+  <div class="container mb-5">
+    <form id="questionario">
+      <!-- Nome -->
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label for="nome" class="form-label fs-5 fw-semibold">Nome</label>
+          <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+        </div>
+      </div>
+
+      <!-- E-mail -->
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label for="email" class="form-label fs-5 fw-semibold">E-mail (opcional)</label>
+          <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+          <div id="erroEmail" class="text-danger mt-2 d-none"></div>
+        </div>
+      </div>
+
+      <!-- QUESTÕES -->
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">1. Quantas horas você costuma dormir por noite?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="A" /> Menos de 5 horas</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="B" /> Entre 5 e 6 horas</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="C" /> Entre 7 e 8 horas</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="D" /> Mais de 8 horas</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">2. Com que frequência você pratica atividades físicas?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="A" /> Nunca</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="B" /> 1 a 2 vezes por semana</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="C" /> 3 a 5 vezes por semana</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="D" /> Todos os dias</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">3. Como é sua alimentação diária?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="A" /> Rica em alimentos industrializados e fast food</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="B" /> Como frutas e vegetais às vezes</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="C" /> Tento manter uma alimentação equilibrada</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="D" /> Sigo uma dieta saudável e variada com frequência</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">4. Quantos copos de água você bebe por dia, em média?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="A" /> 0 a 3 copos</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="B" /> 4 a 6 copos</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="C" /> 7 a 9 copos</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="D" /> 10 ou mais copos</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">5. Você costuma se sentir estressado ou ansioso com frequência?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="A" /> Sempre</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="B" /> Frequentemente</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="C" /> Às vezes</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="D" /> Raramente ou nunca</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">6. Quanto tempo você passa diariamente em frente a telas (celular, computador, TV)?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q6" value="A" /> Mais de 8 horas</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q6" value="B" /> 5 a 8 horas</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q6" value="C" /> 2 a 4 horas</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q6" value="D" /> Menos de 2 horas</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">7. Com que frequência você faz pausas para descanso durante o dia?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q7" value="A" /> Quase nunca</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q7" value="B" /> Poucas vezes</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q7" value="C" /> Algumas vezes ao dia</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q7" value="D" /> Frequentemente e de forma consciente</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">8. Como você classificaria seu nível atual de bem-estar físico e emocional?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q8" value="A" /> Muito ruim</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q8" value="B" /> Regular</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q8" value="C" /> Bom</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q8" value="D" /> Excelente</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">9. Você tem o hábito de consultar profissionais de saúde (médicos, psicólogos, nutricionistas)?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q9" value="A" /> Nunca</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q9" value="B" /> Raramente</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q9" value="C" /> Às vezes</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q9" value="D" /> Regularmente</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="card shadow-sm p-4">
+          <label class="form-label fs-5 fw-semibold">10. Qual destas ações você mais gostaria de melhorar nos próximos meses?</label>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q10" value="A" /> Dormir melhor</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q10" value="B" /> Me alimentar de forma mais saudável</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q10" value="C" /> Me exercitar com regularidade</div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="q10" value="D" /> Reduzir estresse e ansiedade</div>
+        </div>
+      </div>
+
+      <!-- Erro de perguntas -->
+      <div id="erroPerguntas" class="text-danger text-center mb-3 d-none"></div>
+
+      <!-- Botão -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-success btn-lg px-5">
+          <i class="bi bi-send-fill me-2"></i> Enviar Respostas
+        </button>
+      </div>
+    </form>
+
+    <!-- Carregando -->
+    <div id="carregando" class="text-center d-none mt-4">
+      <div class="spinner-border text-success" role="status"></div>
+      <p class="mt-2">Gerando sua análise personalizada...</p>
+    </div>
+
+    <!-- Resultado -->
+    <div id="telaResposta" class="d-none">
+      <div class="text-center mb-4">
+        <h2 class="text-success fw-bold">Obrigado por participar!</h2>
+        <p class="lead">Veja abaixo as orientações personalizadas baseadas nas suas respostas:</p>
+      </div>
+      <div id="respostaVisual" class="p-4 bg-light border rounded"></div>
+    </div>
+  </script>
+
+  <!-- Lógica do formulário -->
+  <script src="scripts/script.js"></script>
+</body>
+</html>
