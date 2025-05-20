@@ -2,29 +2,40 @@
 
 // Converte o texto da IA em HTML visual formatado
 function formatarHTML(respostaTexto) {
-  const linhas = respostaTexto.trim().split("\n");
-  let html = "";
+  const blocos = respostaTexto
+    .split(/\n+/)
+    .map(linha => {
+      linha = linha.trim();
 
-  linhas.forEach(linha => {
-    linha = linha.trim();
+      // Detecta padrão: número. **Título:** Conteúdo (com ou sem dois pontos)
+      const match = linha.match(/^\d+\.\s\*\*(.*?)\*\*[:\-–—]?\s?(.*)$/);
+      if (match) {
+        const titulo = match[1];
+        const conteudo = match[2];
+        return `
+          <div class="mb-3">
+            <strong class="titulo-dica fs-5 d-block">${titulo}</strong>
+            <p class="mb-0">${conteudo}</p>
+          </div>`;
+      }
 
-    // Título identificado por dois pontos no final ou frases fortes
-    if (linha.match(/:$/) || linha.toLowerCase().startsWith("sugestões") || linha.toLowerCase().startsWith("o que está bom")) {
-      html += `<h5 class="fw-bold mt-4">${linha}</h5>`;
-    }
+      // Detecta: **Título:** Conteúdo (sem número)
+      const matchSimples = linha.match(/^\*\*(.*?)\*\*[:\-–—]?\s?(.*)$/);
+      if (matchSimples) {
+        const titulo = matchSimples[1];
+        const conteudo = matchSimples[2];
+        return `
+          <div class="mb-3">
+            <strong class="titulo-dica fs-5 d-block">${titulo}</strong>
+            <p class="mb-0">${conteudo}</p>
+          </div>`;
+      }
 
-    // Lista numerada
-    else if (linha.match(/^\d+\./)) {
-      html += `<p class="mb-2 ms-3">${linha}</p>`;
-    }
+      // Parágrafo simples
+      return `<p>${linha}</p>`;
+    });
 
-    // Frases simples ou observações finais
-    else {
-      html += `<p class="mb-3">${linha}</p>`;
-    }
-  });
-
-  return html;
+  return blocos.join("\n");
 }
 
 // Prepara o texto da IA para envio via WhatsApp (sem asteriscos e com espaçamento duplo)
