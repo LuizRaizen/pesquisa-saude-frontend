@@ -38,9 +38,9 @@ git clone https://github.com/LuizRaizen/pesquisa-saude-frontend.git
 cd pesquisa-saude-frontend
 ```
 
-⚠️ Importante: O frontend sozinho não consegue executar todas as suas funcionalidades. O backend é essencial para que o sistema funcione corretamente.
-
 3. Abra o arquivo `index.html` diretamente no seu navegador ou utilize uma extensão como **Live Server** no VSCode para melhor experiência.
+
+⚠️ Importante: O frontend sozinho não consegue executar todas as suas funcionalidades. O backend é essencial para que o sistema funcione corretamente.
 
 ## 👤 Autor
 
