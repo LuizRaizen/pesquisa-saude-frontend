@@ -3,7 +3,7 @@
 
 Projeto desenvolvido para a **Atividade de Extensão Universitária** do curso de Análise e Desenvolvimento de Sistemas, visando a coleta de dados sobre saúde e bem-estar, com retorno de orientações personalizadas geradas por Inteligência Artificial.
 
-![Preview do site](./img/preview.png)
+![Preview do site](preview.png)
 
 ## 📝 Descrição
 
