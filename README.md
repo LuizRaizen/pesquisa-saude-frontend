@@ -15,7 +15,6 @@ Este sistema web permite a aplicação de um questionário interativo que coleta
 - CSS
 - Bootstrap
 - JavaScript
-- Inputmask
 - API OpenAI (via backend)
 
 ## 🌐 Acesso online
